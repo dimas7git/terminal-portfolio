@@ -7,7 +7,6 @@ Este é o meu projeto de portfólio pessoal inspirado em um estilo de terminal d
 Decidi fazer um fork deste projeto para personalizar e adaptar o estilo do portfólio ao meu gosto pessoal. Além disso, esse projeto me permite apresentar de forma criativa minhas habilidades e projetos para outras pessoas.
 
 ## Personalizações e Adições
-## Personalizações e Adições
 
 Neste fork do projeto original, adicionei funcionalidades e ajustes para melhorar a experiência do usuário e personalizar o terminal de acordo com as minhas preferências. Abaixo estão algumas das principais alterações que fiz:
 
