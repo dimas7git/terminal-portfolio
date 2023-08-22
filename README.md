@@ -27,7 +27,7 @@ input.addEventListener("keypress", async function(event) {
   }
 });
 ```
-## Melhoria na Exibição de Comandos Inválidos
+### Melhoria na Exibição de Comandos Inválidos
 - Aprimorei a exibição dos comandos inválidos, destacando-os em vermelho tanto o comando digitado quanto a mensagem, também foi removido o trueValue.
 ```javascript
 else {
