@@ -1,33 +1,30 @@
-
 const app = document.querySelector("#app");
 const delay = ms => new Promise(res => setTimeout(res, ms));
-    
-    
-app.addEventListener("keypress", async function(event){
-  if(event.key === "Enter"){
+
+app.addEventListener("keypress", async function(event) {
+  if (event.key === "Enter") {
     await delay(150);
-   getInputValue();
-   
+    getInputValue();
+
     removeInput();
     await delay(150);
     new_line();
   }
 });
 
-app.addEventListener("click", function(event){
+app.addEventListener("click", function(event) {
   const input = document.querySelector("input");
   input.focus();
-})
+});
 
-
-async function open_terminal(){
+async function open_terminal() {
   createText("Welcome");
   await delay(700);
   createText("Starting the server...");
   await delay(1500);
   createText("You can run several commands:");
- 
-  createCode("about me", "Who am i and what do i do.");
+
+  createCode("about me", "Who am I and what do I do.");
   createCode("all", "See all commands.");
   createCode("social -a", "All my social networks.");
 
@@ -35,120 +32,102 @@ async function open_terminal(){
   new_line();
 }
 
-
-function new_line(){
-  
+function new_line() {
   const p = document.createElement("p");
   const span1 = document.createElement("span");
   const span2 = document.createElement("span");
-  p.setAttribute("class", "path")
-  p.textContent = "# user";
-  span1.textContent = " in";
-  span2.textContent = " ~/heber-leonard";
+  p.setAttribute("class", "path");
+  p.textContent = "guest@";
+  span2.textContent = "dimas7:~$";
   p.appendChild(span1);
   p.appendChild(span2);
-  app.appendChild(p);
-  const div = document.createElement("div");
-  div.setAttribute("class", "type")
-  const i = document.createElement("i");
-  i.setAttribute("class", "fas fa-angle-right icone")
+
   const input = document.createElement("input");
-  div.appendChild(i);
-  div.appendChild(input);
-  app.appendChild(div);
+  p.appendChild(input);
+  app.appendChild(p);
   input.focus();
-  
-}
 
-function removeInput(){
-  const div = document.querySelector(".type");
-  app.removeChild(div);
-}
-
-async function getInputValue(){
-  
-  const value = document.querySelector("input").value;
-  if(value === "all"){
-    trueValue(value);
+  input.addEventListener("keypress", async function(event) {
+    if (event.key === "Enter") {
+      await delay(150);
+      const value = input.value;
+      span2.textContent = `dimas7:~$ ${value}`; 
+      p.style.color = "#3dff4771";
+      span2.style.color = "#3dff4771";
+      await delay(150);
+      processCommand(value); 
+      input.style.display = "none"; 
     
-    createCode("projects", "My github page with my projects. Follow me there ;)");
-    createCode("about me", "Who am i and what do i do.");
+    }
+  });
+}
+
+function removeInput() {
+  const input = document.querySelector("input");
+  const parentP = input.parentElement; 
+  parentP.removeChild(input); 
+}
+
+
+async function getInputValue() {
+  const input = document.querySelector("input");
+  const value = input.value.trim(); // Remover espaços em branco extras no início e no fim
+  if (value === "all") {
+    createCode("projects", "My GitHub page with my projects. Follow me there ;)");
+    createCode("about me", "Who am I and what do I do.");
     createCode("social -a", "All my social networks.");
     createCode("clear", "Clean the terminal.");
-    
+  } else if (value === "projects") {
+    createText(
+      "<a href='https://github.com/dimas7git' target='_blank'><i class='fab fa-github white'></i> github.com/dimas7git</a>"
+    );
+  } else if (value === "about me") {
+    createText("Oi, meu nome é Dimas ;)");
+    createText(
+      "Entusiasta de sistemas, tecnologia e segurança da informação, encontro paixão tanto em explorar vulnerabilidades quanto em acelerar o desenvolvimento com sólidas práticas de segurança em todas as etapas de criação. Com habilidades versáteis de desenvolvimento, incluindo AWS e Docker, minha dedicação à CyberSecurity visa criar um ambiente online mais seguro. Dominando linguagens como Java, PHP e Python, busco unir agilidade e solidez para proteger o mundo digital."
+    );
+  } else if (value === "social -a") {
+    createText(
+      "<a href='https://github.com/dimas7git' target='_blank'><i class='fab fa-github white'></i> github.com/dimas7git</a>"
+    );
+    createText(
+      "<a href='https://www.linkedin.com/in/dimas7/' target='_blank'><i class='fab fa-linkedin-in white'></i> linkedin.com/in/dimas7</a>"
+    );
+    createText(
+      "<a href='https://www.instagram.com/dimas7fe/' target='_blank'><i class='fab fa-instagram white'></i> instagram.com/dimas7fe</a>"
+    );
+  } else if (value === "social") {
+    createText("Didn't you mean: social -a?");
+  } else if (value === "clear") {
+    removeAllElements();
+  } else {
+    falseValue(`command not found: ${value}`);
   }
-  else if(value === "projects"){
-    trueValue(value);
-    createText("<a href='https://github.com/heberleonard2' target='_blank'><i class='fab fa-github white'></i> github.com/heberleonard2</a>")
-  }
-  else if(value === "about me"){
-    trueValue(value);
-    createText("Oi, meu nome é Héber ;)")
-    createText("Desenvolvedor atualmente focado em todo o ecossistema Javascript. Utilizando principalmente a stack <span class='blue'>Node, React e React Native </span>por permitir criar aplicações de forma descomplicada e produtiva.")
-  }
-  else if(value === "social -a"){
-    trueValue(value);
-    createText("<a href='https://github.com/heberleonard2' target='_blank'><i class='fab fa-github white'></i> github.com/heberleonard2</a>")
-    createText("<a href='https://www.linkedin.com/in/heber-leonard/' target='_blank'><i class='fab fa-linkedin-in white'></i> linkedin.com/in/heber-leonard</a>")
-    createText("<a href='https://www.instagram.com/heber_leonard/' target='_blank'><i class='fab fa-instagram white'></i> instagram.com/heber_leonard</a>")
-  }
-  else if(value === "social"){
-    trueValue(value);
-    createText("Didn't you mean: social -a?")
-  }
-  
-  else if(value === "clear"){
-    document.querySelectorAll("p").forEach(e => e.parentNode.removeChild(e));
-    document.querySelectorAll("section").forEach(e => e.parentNode.removeChild(e));
-  }
-  else{
-    falseValue(value);
-    createText(`command not found: ${value}`)
-  }
+
+  input.value = ""; 
 }
 
-function trueValue(value){
-  
+
+function falseValue(value) {
   const div = document.createElement("section");
-  div.setAttribute("class", "type2")
-  const i = document.createElement("i");
-  i.setAttribute("class", "fas fa-angle-right icone")
+  div.setAttribute("class", "type2");
   const mensagem = document.createElement("h2");
-  mensagem.setAttribute("class", "sucess")
-  mensagem.textContent = `${value}`;
-  div.appendChild(i);
+  mensagem.setAttribute("class", "error");
+  mensagem.textContent = value;
   div.appendChild(mensagem);
   app.appendChild(div);
 }
 
-function falseValue(value){
-  
-  const div = document.createElement("section");
-  div.setAttribute("class", "type2")
-  const i = document.createElement("i");
-  i.setAttribute("class", "fas fa-angle-right icone error")
-  const mensagem = document.createElement("h2");
-  mensagem.setAttribute("class", "error")
-  mensagem.textContent = `${value}`;
-  div.appendChild(i);
-  div.appendChild(mensagem);
-  app.appendChild(div);
-}
-
-function createText(text, classname){
+function createText(text, classname) {
   const p = document.createElement("p");
-  
-  p.innerHTML =
-  text
-  ;
+  p.innerHTML = text;
   app.appendChild(p);
 }
 
-function createCode(code, text){
+function createCode(code, text) {
   const p = document.createElement("p");
   p.setAttribute("class", "code");
-  p.innerHTML =
- `${code} <br/><span class='text'> ${text} </span>`;
+  p.innerHTML = `${code} <br/><span class='text'> ${text} </span>`;
   app.appendChild(p);
 }
 
