@@ -6,9 +6,9 @@ let input; // Variável para armazenar o elemento input
 let firstCommandExecuted = false; // Variável de controle
 
 async function open_terminal() {
-  createText("Choose a language");
+  createText("Define a language");
   await delay(500);
-  createCode("Portuguese or English?", "choice");
+  createCode("Portuguese or English?", "Your choice:");
   await delay(500);
   new_line();
   app.addEventListener("click", function(event) {
