@@ -109,9 +109,9 @@ function processUserInput(value) {
       createCode("cowsay", "Escreva algo para a vaca falar.");
       createCode("limpar", "Limpar o terminal.");
     } else if (value.trim().toLowerCase() === "projetos") {
-      createText(
-        "<a href='https://github.com/dimas7git' target='_blank'><i class='fab fa-github white'></i> github.com/dimas7git</a>"
-      );
+      createText("Alguns dos meus projetos:");
+      createCode1("Proteção contra Pendrives Infectados:", "<a href='https://github.com/dimas7git/TCC-EnsinoMedio-IFSP' target='_blank'><i class='fab fa-github white'></i> TCC </a>");
+      createCode1("Sistema de gerenciamento de hospital -> Java desktop e Web em PHP:", "<a href='https://github.com/dimas7git/ProjetoIntegrador-VersaoJava-EnsinoMedio-IFSP' target='_blank'><i class='fab fa-github white'></i> Projeto Integrador</a>");
     } 
     else if (value.trim().toLowerCase() === "habilidades") {
       createText("Aqui estão algumas das minhas principais habilidades técnicas:");
@@ -186,10 +186,11 @@ function processUserInput(value) {
       createCode("clear", "Clean the terminal.");
       
     } else if (value.trim().toLowerCase() === "projects") {
-      createText(
-        "<a href='https://github.com/dimas7git' target='_blank'><i class='fab fa-github white'></i> github.com/dimas7git</a>"
-      );
-    } else if (value.trim().toLowerCase() === "about me") {
+      createText("Some of my projects:");
+      createCode1("Protection against Infected USB Drives:", "<a href='https://github.com/dimas7git/TCC-EnsinoMedio-IFSP' target='_blank'><i class='fab fa-github white'></i> TCC </a>");
+      createCode1("Hospital Management System -> Java Desktop and PHP Web:", "<a href='https://github.com/dimas7git/ProjetoIntegrador-VersaoJava-EnsinoMedio-IFSP' target='_blank'><i class='fab fa-github white'></i> Integrated Project</a>");
+    }
+     else if (value.trim().toLowerCase() === "about me") {
       createText("Hi, my name is Dimas ;)");
       createText(
         "Passionate about systems, technology, and information security, I find joy in both exploring vulnerabilities and accelerating development with solid security practices at every stage of creation. With versatile development skills including AWS and Docker, my dedication to CyberSecurity aims to create a safer online environment. Mastering languages like Java, PHP, and Python, I seek to combine agility and solidity to protect the digital world."
