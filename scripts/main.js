@@ -77,8 +77,9 @@ async function processCommand(command) {
     createText("Você pode executar vários comandos:");
 
     createCode("sobre mim", "Quem sou eu e o que faço.");
-    createCode("todos", "Ver todos os comandos.");
+    createCode("habilidades", "Algumas das minhas habilidades técnicas.");
     createCode("social -a", "Todas as minhas redes sociais.");
+    createCode("todos", "Ver todos os comandos.");
     await delay(500);
     new_line(); 
   } else if (command.trim().toLowerCase() === "ingles" || command.trim().toLowerCase() === "inglês" || command.trim().toLowerCase() === "english") {
@@ -88,8 +89,9 @@ async function processCommand(command) {
     await delay(1500);
     createText("You can run several commands:");
     createCode("about me", "Who am I and what do I do.");
-    createCode("all", "See all commands.");
+    createCode("skills", "Some of my technical skills")
     createCode("social -a", "All my social networks.");
+    createCode("all", "See all commands.");
     await delay(500);
     new_line(); 
   } else {
@@ -104,16 +106,56 @@ function processUserInput(value) {
       createCode("projetos", "Minha página GitHub com meus projetos. Siga-me lá ;)");
       createCode("sobre mim", "Quem sou eu e o que faço.");
       createCode("social -a", "Todas as minhas redes sociais.");
+      createCode("habilidades", "Algumas das minhas habilidades técnicas");
+      createCode("cowsay", "Receba um olá da vaca.");
       createCode("limpar", "Limpar o terminal.");
     } else if (value.trim().toLowerCase() === "projetos") {
       createText(
         "<a href='https://github.com/dimas7git' target='_blank'><i class='fab fa-github white'></i> github.com/dimas7git</a>"
       );
+    } 
+    else if (value.trim().toLowerCase() === "habilidades") {
+      createText("Aqui estão algumas das minhas principais habilidades técnicas:");
+
+      createCode1("Linguagens de Programação:", "Java, Python, C++, C#, PHP, JavaScript");
+      createCode1("Desenvolvimento Web:", "HTML5, CSS3, Node.js, Laravel");
+      createCode1("Banco de Dados:", "MySQL, PostgreSQL");
+      createCode1("Servidores Web:", "Nginx, Apache");
+      createCode1("Frameworks e Plataformas:", "Spring (Java), Bootstrap, AWS (Amazon Web Services)");
+      createCode1("Controle de Versão:", "Git");
+      createCode1("Contêinerização:", "Docker");
+      createCode1("Sistema Operacional:", "Linux, Windows");
+    
+      createText("Além disso, tenho conhecimentos em várias ferramentas de pentest, incluindo:");
+      createCode1("Ferramentas de Pentest:", "Burp Suite, Nmap, Metasploit, Wireshark");
+      createCode1("Análise de Vulnerabilidades:", "Identificação e correção de vulnerabilidades de segurança");
+      createCode1("Segurança da Informação:", "Práticas de segurança em desenvolvimento e operações");
+    
+      createText("Estou sempre aprendendo e atualizando minhas habilidades para enfrentar novos desafios na área de tecnologia.");
+      
     } else if (value.trim().toLowerCase() === "sobre mim") {
       createText("Oi, meu nome é Dimas ;)");
       createText(
         "Entusiasta de sistemas, tecnologia e segurança da informação, encontro paixão tanto em explorar vulnerabilidades quanto em acelerar o desenvolvimento com sólidas práticas de segurança em todas as etapas de criação. Com habilidades versáteis de desenvolvimento, incluindo AWS e Docker, minha dedicação à CyberSecurity visa criar um ambiente online mais seguro. Dominando linguagens como Java, PHP e Python, busco unir agilidade e solidez para proteger o mundo digital."
       );
+    }else if (value.trim().toLowerCase() === "cowsay") {
+      const generateCowsayMessage = (message) => {
+        const cowMessage = `
+         ____
+        < ${message} >
+         ----
+                \\   ^__^
+                 \\  (oo)\\_______
+                    (__)\\       )\\/\\
+                        ||----w |
+                        ||     ||`;
+        return cowMessage;
+      };
+    
+      const message = "Olá!";
+      const cowsayText = generateCowsayMessage(message);
+    
+      createText(`<pre>${cowsayText}</pre>`);
     } else if (value.trim().toLowerCase() === "social -a") {
       createText(
         "<a href='https://github.com/dimas7git' target='_blank'><i class='fab fa-github white'></i> github.com/dimas7git</a>"
@@ -136,7 +178,10 @@ function processUserInput(value) {
       createCode("projects", "My GitHub page with my projects. Follow me there ;)");
       createCode("about me", "Who am I and what do I do.");
       createCode("social -a", "All my social networks.");
+      createCode("skills", "Some of my technical skills")
       createCode("clear", "Clean the terminal.");
+      createCode("cowsay", "Get a hello from the cow.");
+      
     } else if (value.trim().toLowerCase() === "projects") {
       createText(
         "<a href='https://github.com/dimas7git' target='_blank'><i class='fab fa-github white'></i> github.com/dimas7git</a>"
@@ -147,7 +192,26 @@ function processUserInput(value) {
         "Passionate about systems, technology, and information security, I find joy in both exploring vulnerabilities and accelerating development with solid security practices at every stage of creation. With versatile development skills including AWS and Docker, my dedication to CyberSecurity aims to create a safer online environment. Mastering languages like Java, PHP, and Python, I seek to combine agility and solidity to protect the digital world."
       );
       
-    } else if (value.trim().toLowerCase() === "social -a") {
+    }else if (value.trim().toLowerCase() === "skills") {
+      createText("Here are some of my key technical skills:");
+    
+      createCode1("Programming Languages:", "Java, Python, C++, C#, PHP, JavaScript");
+      createCode1("Web Development:", "HTML5, CSS3, Node.js, Laravel");
+      createCode1("Database:", "MySQL, PostgreSQL");
+      createCode1("Web Servers:", "Nginx, Apache");
+      createCode1("Frameworks and Platforms:", "Spring (Java), Bootstrap, AWS (Amazon Web Services)");
+      createCode1("Version Control:", "Git");
+      createCode1("Containerization:", "Docker");
+      createCode1("Operating Systems:", "Linux, Windows");
+    
+      createText("Additionally, I have knowledge in various pentest tools, including:");
+      createCode1("Pentest Tools:", "Burp Suite, Nmap, Metasploit, Wireshark");
+      createCode1("Vulnerability Analysis:", "Identification and remediation of security vulnerabilities");
+      createCode1("Information Security:", "Security practices in development and operations");
+    
+      createText("I'm always learning and updating my skills to tackle new challenges in the technology field.");
+    }
+     else if (value.trim().toLowerCase() === "social -a") {
       createText(
         "<a href='https://github.com/dimas7git' target='_blank'><i class='fab fa-github white'></i> github.com/dimas7git</a>"
       );
@@ -157,7 +221,26 @@ function processUserInput(value) {
       createText(
         "<a href='https://www.instagram.com/dimas7fe/' target='_blank'><i class='fab fa-instagram white'></i> instagram.com/dimas7fe</a>"
       );
-    } else if (value.trim().toLowerCase() === "social") {
+    }else if (value.trim().toLowerCase() === "cowsay") {
+      const generateCowsayMessage = (message) => {
+        const cowMessage = `
+         ____
+        < ${message} >
+         ----
+                \\   ^__^
+                 \\  (oo)\\_______
+                    (__)\\       )\\/\\
+                        ||----w |
+                        ||     ||`;
+        return cowMessage;
+      };
+    
+      const message = "Hello!";
+      const cowsayText = generateCowsayMessage(message);
+    
+      createText(`<pre>${cowsayText}</pre>`);
+    }
+     else if (value.trim().toLowerCase() === "social") {
       createText("Did you mean: social -a?");
       
     } else if (value.trim().toLowerCase() === "clear") {
@@ -197,4 +280,10 @@ function createCode(code, text) {
   app.appendChild(p);
 }
 
+function createCode1(code, text) {
+  const p = document.createElement("p");
+  p.setAttribute("class", "code1");
+  p.innerHTML = `${code} <br/><span class='text'> ${text} </span>`;
+  app.appendChild(p);
+}
 open_terminal();
