@@ -6,7 +6,7 @@ Este é o meu projeto de portfólio pessoal inspirado em um estilo de terminal d
 
 Decidi fazer um fork deste projeto para personalizar e adaptar o estilo do portfólio ao meu gosto pessoal. Além disso, esse projeto me permite apresentar de forma criativa minhas habilidades e projetos para outras pessoas.
 
-[![](portfolio.gif)](https://user-images.githubusercontent.com/51919658/86963051-477f2400-c13a-11ea-9d34-22885d426c10.gif)
+[![](portfolio.gif)]
 
 ## Personalizações e Adições
 
