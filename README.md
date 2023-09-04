@@ -6,11 +6,15 @@ Este é o meu projeto de portfólio pessoal inspirado em um estilo de terminal d
 
 Decidi fazer um fork deste projeto para personalizar e adaptar o estilo do portfólio ao meu gosto pessoal. Além disso, esse projeto me permite apresentar de forma criativa minhas habilidades e projetos para outras pessoas.
 
-[![](portfolio.gif)]
+![](portfolio.gif)
 
 ## Personalizações e Adições
 
 Neste fork do projeto original, adicionei funcionalidades e ajustes para melhorar a experiência do usuário e personalizar o terminal de acordo com as minhas preferências. Abaixo estão algumas das principais alterações que fiz:
+
+### Escolha de Idioma
+
+Aprimorei o projeto adicionando uma escolha de idioma (Português ou Inglês) para personalizar a experiência do usuário.
 
 ### Interatividade Aprimorada
 - Personalizei a interação do usuário com o terminal, implementando um sistema que muda a cor do prompt e do texto inserido após pressionar Enter. Isso ajuda a diferenciar as entradas do usuário das respostas do terminal.
