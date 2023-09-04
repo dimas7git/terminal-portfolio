@@ -18,11 +18,11 @@ async function open_terminal() {
 
 app.addEventListener("keypress", async function(event) {
   if (event.key === "Enter") {
-    await delay(30);
+    await delay(150);
     processCommand();
 
     removeInput();
-    await delay(30);
+    await delay(150);
     if (firstCommandExecuted) {
       new_line(); 
     } else {
