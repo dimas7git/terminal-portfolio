@@ -18,15 +18,15 @@ async function open_terminal() {
 
 app.addEventListener("keypress", async function(event) {
   if (event.key === "Enter") {
-    await delay(150);
+    await delay(30);
     processCommand();
 
     removeInput();
-    await delay(150);
+    await delay(30);
     if (firstCommandExecuted) {
-      new_line(); // Chama a new_line() após a primeira execução
+      new_line(); 
     } else {
-      firstCommandExecuted = true; // Define a variável como true após a primeira execução
+      firstCommandExecuted = true; 
     }
   }
 });
@@ -41,7 +41,7 @@ async function new_line() {
   p.appendChild(span1);
   p.appendChild(span2);
 
-  input = document.createElement("input"); // Atribuir à variável input
+  input = document.createElement("input"); 
   p.appendChild(input);
   app.appendChild(p);
   input.focus();
@@ -73,7 +73,6 @@ async function processCommand(command) {
     await delay(700);
     createText("Iniciando o servidor...");
     await delay(500);
-    // Remova essa chamada
     createText("Você pode executar vários comandos:");
 
     createCode("sobre mim", "Quem sou eu e o que faço.");
@@ -107,7 +106,7 @@ function processUserInput(value) {
       createCode("sobre mim", "Quem sou eu e o que faço.");
       createCode("social -a", "Todas as minhas redes sociais.");
       createCode("habilidades", "Algumas das minhas habilidades técnicas");
-      createCode("cowsay", "Receba um olá da vaca.");
+      createCode("cowsay", "Escreva algo para a vaca falar.");
       createCode("limpar", "Limpar o terminal.");
     } else if (value.trim().toLowerCase() === "projetos") {
       createText(
@@ -138,12 +137,14 @@ function processUserInput(value) {
       createText(
         "Entusiasta de sistemas, tecnologia e segurança da informação, encontro paixão tanto em explorar vulnerabilidades quanto em acelerar o desenvolvimento com sólidas práticas de segurança em todas as etapas de criação. Com habilidades versáteis de desenvolvimento, incluindo AWS e Docker, minha dedicação à CyberSecurity visa criar um ambiente online mais seguro. Dominando linguagens como Java, PHP e Python, busco unir agilidade e solidez para proteger o mundo digital."
       );
-    }else if (value.trim().toLowerCase() === "cowsay") {
+    }else if (value.toLowerCase().startsWith("cowsay ")) {
+      const message = value.substring(7).trim();
+   
       const generateCowsayMessage = (message) => {
         const cowMessage = `
-         ____
+         ______________
         < ${message} >
-         ----
+         --------------
                 \\   ^__^
                  \\  (oo)\\_______
                     (__)\\       )\\/\\
@@ -152,10 +153,12 @@ function processUserInput(value) {
         return cowMessage;
       };
     
-      const message = "Olá!";
-      const cowsayText = generateCowsayMessage(message);
-    
-      createText(`<pre>${cowsayText}</pre>`);
+      if (message) {
+        const cowsayText = generateCowsayMessage(message);
+        createText(`<pre>${cowsayText}</pre>`);
+      } else {
+        createText("Escreva uma mensagem para a vaca");
+      }
     } else if (value.trim().toLowerCase() === "social -a") {
       createText(
         "<a href='https://github.com/dimas7git' target='_blank'><i class='fab fa-github white'></i> github.com/dimas7git</a>"
@@ -178,9 +181,9 @@ function processUserInput(value) {
       createCode("projects", "My GitHub page with my projects. Follow me there ;)");
       createCode("about me", "Who am I and what do I do.");
       createCode("social -a", "All my social networks.");
-      createCode("skills", "Some of my technical skills")
+      createCode("skills", "Some of my technical skills");
+      createCode("cowsay", "Write something for the cow to say.");
       createCode("clear", "Clean the terminal.");
-      createCode("cowsay", "Get a hello from the cow.");
       
     } else if (value.trim().toLowerCase() === "projects") {
       createText(
@@ -221,12 +224,13 @@ function processUserInput(value) {
       createText(
         "<a href='https://www.instagram.com/dimas7fe/' target='_blank'><i class='fab fa-instagram white'></i> instagram.com/dimas7fe</a>"
       );
-    }else if (value.trim().toLowerCase() === "cowsay") {
+    }else if (value.toLowerCase().startsWith("cowsay ")) {
+      const message = value.substring(7).trim();
       const generateCowsayMessage = (message) => {
         const cowMessage = `
-         ____
+        ______________
         < ${message} >
-         ----
+         --------------
                 \\   ^__^
                  \\  (oo)\\_______
                     (__)\\       )\\/\\
@@ -235,10 +239,13 @@ function processUserInput(value) {
         return cowMessage;
       };
     
-      const message = "Hello!";
-      const cowsayText = generateCowsayMessage(message);
+      if (message) {
+        const cowsayText = generateCowsayMessage(message);
     
-      createText(`<pre>${cowsayText}</pre>`);
+        createText(`<pre>${cowsayText}</pre>`);
+      } else {
+        createText("Please provide a message for the cow.");
+      }
     }
      else if (value.trim().toLowerCase() === "social") {
       createText("Did you mean: social -a?");
